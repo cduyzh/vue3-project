@@ -36,6 +36,36 @@
                                 >第三届中国融资租赁总经理高峰论坛</a
                             >
                         </a-menu-item>
+                        <a-menu-item>
+                            <a href="javascript:;"
+                                >第三届中国融资租赁总经理高峰论坛</a
+                            >
+                        </a-menu-item>
+                        <a-menu-item>
+                            <a href="javascript:;"
+                                >第五届中国融资租赁创新与发展高峰论坛</a
+                            >
+                        </a-menu-item>
+                        <a-menu-item>
+                            <a href="javascript:;"
+                                >第三届中国融资租赁总经理高峰论坛</a
+                            >
+                        </a-menu-item>
+                        <a-menu-item>
+                            <a href="javascript:;"
+                                >第三届中国融资租赁总经理高峰论坛</a
+                            >
+                        </a-menu-item>
+                        <a-menu-item>
+                            <a href="javascript:;"
+                                >第五届中国融资租赁创新与发展高峰论坛</a
+                            >
+                        </a-menu-item>
+                        <a-menu-item>
+                            <a href="javascript:;"
+                                >第三届中国融资租赁总经理高峰论坛</a
+                            >
+                        </a-menu-item>
                     </a-menu>
                 </template>
             </a-dropdown>
@@ -62,7 +92,7 @@
         },
         data() {
             return {
-                showDropDown: false
+                showDropDown: true
             }
         },
         computed: {
@@ -72,19 +102,19 @@
                     selector: '/',
                 }, {
                     name: '致辞',
-                    selector: '/',
+                    selector: '.address-bg',
                 }, {
                     name: '嘉宾',
-                    selector: '/',
+                    selector: '.guests-speech',
                 }, {
                     name: '圆桌',
-                    selector: '/',
+                    selector: '.round-table',
                 }, {
                     name: '新闻',
-                    selector: '/',
+                    selector: '.top-news',
                 }, {
                     name: '参会',
-                    selector: '/',
+                    selector: '.participating-companies',
                 }] : [{
                     name: '首页',
                     selector: '.head-nav-content',
@@ -191,9 +221,9 @@
         color: #fff;
     }
     .ant-dropdown-menu {
-        left: 1196px;
-        top: 51px;
-        padding: 4px 36px;
+        padding: 4px 24px;
+        left: -119px;
+        top: 17px;
     }
     .ant-dropdown-menu-item:hover,
     .ant-dropdown-menu-submenu-title:hover {
