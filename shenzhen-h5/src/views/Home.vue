@@ -3,7 +3,7 @@
         <a-back-top />
         <HeadNav />
         <div class="main-banner"></div>
-        <div class="meeting-bg content-warp">
+        <div id="meeting-bg" class="meeting-bg content-warp">
             <div class="article-title">
                 <div class="border-left"></div>
                 <div>

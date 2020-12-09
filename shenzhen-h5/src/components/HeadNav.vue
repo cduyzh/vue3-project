@@ -1,15 +1,17 @@
 <template>
     <div class="head-nav-content content-warp">
         <a href="/">
-            <img class="logo" src="../assets/logo.png" alt="" />
+            <img class="logo" src="../assets/logo-1.png" alt="" />
         </a>
         <div class="nav-menu">
-            <a href="/"> 首页 </a>
-            <a href="/"> 背景 </a>
-            <a href="/"> 议程 </a>
-            <a href="/"> 新闻 </a>
-            <a href="/"> 嘉宾 </a>
-            <a href="/"> 合作 </a>
+            <a
+                v-for="(item, index) in menuList"
+                :key="index"
+                href="javascript:void(0)"
+                @click="scrollTo(item.selector)"
+            >
+                {{ item.name }}
+            </a>
             <a-dropdown
                 :class="{ 'show-drop-down': showDropDown }"
                 @visibleChange="onDropdownShow"
@@ -20,19 +22,27 @@
                 <template #overlay>
                     <a-menu>
                         <a-menu-item>
-                            <a href="javascript:;">1st menu item</a>
+                            <a href="javascript:;"
+                                >第三届中国融资租赁总经理高峰论坛</a
+                            >
                         </a-menu-item>
                         <a-menu-item>
-                            <a href="javascript:;">2nd menu item</a>
+                            <a href="javascript:;"
+                                >第五届中国融资租赁创新与发展高峰论坛</a
+                            >
                         </a-menu-item>
                         <a-menu-item>
-                            <a href="javascript:;">3rd menu item</a>
+                            <a href="javascript:;"
+                                >第三届中国融资租赁总经理高峰论坛</a
+                            >
                         </a-menu-item>
                     </a-menu>
                 </template>
             </a-dropdown>
         </div>
-        <a-button type="primary" @click="onClickBtn">申请参会</a-button>
+        <a-button type="primary" @click="scrollTo('.footer')"
+            >申请参会</a-button
+        >
     </div>
 </template>
 
@@ -41,6 +51,12 @@
 
     export default {
         name: 'HeadNav',
+        props: {
+            isPrevious: {
+                type: Boolean,
+                default: false
+            }
+        },
         components: {
             DownOutlined
         },
@@ -49,8 +65,63 @@
                 showDropDown: false
             }
         },
+        computed: {
+            menuList() {
+                return this.isPrevious ? [{
+                    name: '首页',
+                    selector: '/',
+                }, {
+                    name: '致辞',
+                    selector: '/',
+                }, {
+                    name: '嘉宾',
+                    selector: '/',
+                }, {
+                    name: '圆桌',
+                    selector: '/',
+                }, {
+                    name: '新闻',
+                    selector: '/',
+                }, {
+                    name: '参会',
+                    selector: '/',
+                }] : [{
+                    name: '首页',
+                    selector: '.head-nav-content',
+                }, {
+                    name: '背景',
+                    selector: '.meeting-bg',
+                }, {
+                    name: '议程',
+                    selector: '.meeting-agenda',
+                }, {
+                    name: '新闻',
+                    selector: '.top-news',
+                }, {
+                    name: '嘉宾',
+                    selector: '.important-guests',
+                }, {
+                    name: '合作',
+                    selector: '.cooperation-unit-warp',
+                }]
+            }
+        },
         methods: {
-            onClickBtn() {
+            getOffsetTop(elem) {
+                let top = 0
+                while (elem) {
+                    top += elem.offsetTop
+                    elem = elem.offsetParent
+                }
+                return top
+            },
+            scrollTo(selector) {
+                const elem = document.querySelector(selector)
+                console.log('Hobby Test ~ file: HeadNav.vue ~ line 109 ~ scrollTo ~ elem', elem)
+                if (elem) {
+                    document.body.scrollTop = document.documentElement.scrollTop =
+                        this.getOffsetTop(elem)
+                }
             },
             onDropdownShow(visible) {
                 this.showDropDown = visible
@@ -118,5 +189,14 @@
         background: #eb6314;
         border-color: #eb6314;
         color: #fff;
+    }
+    .ant-dropdown-menu {
+        left: 1196px;
+        top: 51px;
+        padding: 4px 36px;
+    }
+    .ant-dropdown-menu-item:hover,
+    .ant-dropdown-menu-submenu-title:hover {
+        background-color: #fff;
     }
 </style>
