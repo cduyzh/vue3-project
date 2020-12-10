@@ -13,6 +13,7 @@
                 {{ item.name }}
             </a>
             <a-dropdown
+                v-if="0"
                 :class="{ 'show-drop-down': showDropDown }"
                 @visibleChange="onDropdownShow"
             >

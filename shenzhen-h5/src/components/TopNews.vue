@@ -25,6 +25,7 @@
             <div class="time-line">
                 <a-timeline>
                     <a-timeline-item>
+                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
@@ -34,6 +35,7 @@
                         </p>
                     </a-timeline-item>
                     <a-timeline-item>
+                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
@@ -43,6 +45,7 @@
                         </p></a-timeline-item
                     >
                     <a-timeline-item>
+                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
@@ -52,6 +55,7 @@
                         </p></a-timeline-item
                     >
                     <a-timeline-item>
+                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
@@ -61,6 +65,7 @@
                         </p></a-timeline-item
                     >
                     <a-timeline-item>
+                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
@@ -141,11 +146,15 @@
             font-size: 14px;
         }
         .title {
+            font-family: SourceHanSansCN-Regular, SourceHanSansCN;
             width: 486px;
             font-size: 20px;
             overflow: hidden; //超出的文本隐藏
             text-overflow: ellipsis; //溢出用省略号显示
             white-space: nowrap; //溢出不换行
+            margin-bottom: 13px;
+            font-weight: bold;
+            color: #333;
         }
         .des {
             color: #333333;
@@ -160,11 +169,11 @@
 
     .time-line {
         padding: 45px 22px 0 33px;
-
         .title {
             font-size: 14px;
             font-family: SourceHanSansCN-Medium, SourceHanSansCN;
-            font-weight: 500;
+            font-weight: 700;
+            margin-bottom: 10px;
             color: #333333;
             line-height: 21px;
             &:hover {
@@ -178,6 +187,10 @@
             font-weight: 400;
             color: #666666;
             line-height: 18px;
+        }
+        .cube-icon{
+            width: 14px;
+            height: 14px;
         }
     }
 </style>

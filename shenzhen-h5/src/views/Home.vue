@@ -81,6 +81,7 @@
             font-weight: 400;
             color: #333333;
             line-height: 25px;
+            text-align: justify;
         }
     }
     .article-title {

@@ -84,7 +84,7 @@
     h4 {
         font-size: 16px;
         font-family: SourceHanSansCN-Regular, SourceHanSansCN;
-        font-weight: 400;
+        font-weight: 700;
         color: #333333;
         line-height: 12px;
         margin-bottom: 25px;

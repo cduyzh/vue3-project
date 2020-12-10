@@ -52,6 +52,15 @@
         flex-direction: column;
         margin-bottom: 50px;
         align-items: center;
+        p {
+            font-size: 14px;
+            font-family: SourceHanSansCN-Regular, SourceHanSansCN;
+            font-weight: 400;
+            color: #333333;
+            line-height: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
     }
     .avatar {
         width: 128px;
@@ -59,14 +68,7 @@
         border-radius: 100px;
         border: 4px solid #ededed;
     }
-    p {
-        font-size: 14px;
-        font-family: SourceHanSansCN-Regular, SourceHanSansCN;
-        font-weight: 400;
-        color: #333333;
-        line-height: 12px;
-        text-align: center;
-    }
+
     .name {
         font-size: 20px;
         font-family: SourceHanSansCN-Medium, SourceHanSansCN;
