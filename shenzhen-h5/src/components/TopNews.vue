@@ -25,47 +25,72 @@
             <div class="time-line">
                 <a-timeline>
                     <a-timeline-item>
-                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
+                        <template #dot
+                            ><img
+                                class="cube-icon"
+                                src="../assets/cube.png"
+                                alt=""
+                        /></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
                         <p class="des">
                             9月29日，
-                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
+                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
                         </p>
                     </a-timeline-item>
                     <a-timeline-item>
-                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
+                        <template #dot
+                            ><img
+                                class="cube-icon"
+                                src="../assets/cube.png"
+                                alt=""
+                        /></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
                         <p class="des">
                             9月29日，
-                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
+                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
                         </p></a-timeline-item
                     >
                     <a-timeline-item>
-                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
+                        <template #dot
+                            ><img
+                                class="cube-icon"
+                                src="../assets/cube.png"
+                                alt=""
+                        /></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
                         <p class="des">
                             9月29日，
-                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
+                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
                         </p></a-timeline-item
                     >
                     <a-timeline-item>
-                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
+                        <template #dot
+                            ><img
+                                class="cube-icon"
+                                src="../assets/cube.png"
+                                alt=""
+                        /></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
                         <p class="des">
                             9月29日，
-                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
+                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
                         </p></a-timeline-item
                     >
                     <a-timeline-item>
-                        <template #dot><img class="cube-icon" src="../assets/cube.png" alt=""></template>
+                        <template #dot
+                            ><img
+                                class="cube-icon"
+                                src="../assets/cube.png"
+                                alt=""
+                        /></template>
                         <p class="title">
                             元戎启行联合杭州，建立长三角自动驾驶测…
                         </p>
@@ -88,7 +113,7 @@
                 newsContent: [{
                     pic: require('../assets/top-news-1.png'),
                     title: '分享主题分享主题分享主题分享主题分享主题分享分享主题分享主题分享主题分享主题分享主题分享',
-                    des: '分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介。'
+                    des: '分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介。分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介。'
                 }, {
                     pic: require('../assets/top-news-2.png'),
                     title: '新四化下的汽车零部件行业报告金山办公宣布金山新四化下的汽车零部件行业报告金山办公宣布金山',
@@ -159,6 +184,11 @@
         .des {
             color: #333333;
             text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
         }
         &:hover {
             .title {
@@ -187,8 +217,13 @@
             font-weight: 400;
             color: #666666;
             line-height: 18px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
-        .cube-icon{
+        .cube-icon {
             width: 14px;
             height: 14px;
         }

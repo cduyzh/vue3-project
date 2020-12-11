@@ -61,6 +61,14 @@
             text-align: center;
             margin-bottom: 10px;
         }
+        .name {
+            font-size: 20px;
+            font-family: SourceHanSansCN-Medium, SourceHanSansCN;
+            font-weight: 700;
+            color: #333333;
+            line-height: 30px;
+            margin: 15px 0;
+        }
     }
     .avatar {
         width: 128px;
@@ -69,14 +77,6 @@
         border: 4px solid #ededed;
     }
 
-    .name {
-        font-size: 20px;
-        font-family: SourceHanSansCN-Medium, SourceHanSansCN;
-        font-weight: 500;
-        color: #333333;
-        line-height: 30px;
-        margin: 15px 0;
-    }
     .more-content {
         font-size: 20px;
         font-family: SourceHanSansCN-Regular, SourceHanSansCN;

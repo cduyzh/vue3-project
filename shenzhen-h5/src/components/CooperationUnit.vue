@@ -102,6 +102,9 @@
     .img-group-2 {
         img {
             margin: 0 24px 20px 0;
+            &:nth-child(6n + 6) {
+                margin-right: 0;
+            }
         }
     }
 </style>

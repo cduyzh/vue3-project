@@ -108,6 +108,7 @@
             line-height: 26px;
             text-transform: uppercase;
             margin-bottom: 0;
+            margin-top: 0;
             text-align: left;
         }
     }
