@@ -3,28 +3,24 @@
         <div class="content-warp">
             <img class="logo" src="../assets/logo.png" alt="" />
             <div class="split-line"></div>
-            <div class="nav-content">
-                <img class="qr-code" src="../assets/qr-code.png" alt="" />
+            <div
+                class="nav-content"
+                v-for="item in vxAllDataInfo.employList"
+                :key="item.id"
+            >
+                <img
+                    class="qr-code"
+                    :src="
+                        item.qrCode.length < 20
+                            ? `http://pre.ryx365.com:8888/images/${item.qrCode}.jpg`
+                            : item.img
+                    "
+                    alt=""
+                />
                 <div class="nav">
-                    <h4>参会咨询</h4>
-                    <p class="tel">电话：135-6803-5261</p>
-                    <p class="wechat">微信：asdhs5261</p>
-                </div>
-            </div>
-            <div class="nav-content">
-                <img class="qr-code" src="../assets/qr-code.png" alt="" />
-                <div class="nav">
-                    <h4>合作咨询</h4>
-                    <p class="tel">电话：135-6803-5261</p>
-                    <p class="wechat">微信：asdhs5261</p>
-                </div>
-            </div>
-            <div class="nav-content">
-                <img class="qr-code" src="../assets/qr-code.png" alt="" />
-                <div class="nav">
-                    <h4>媒体咨询</h4>
-                    <p class="tel">电话：135-6803-5261</p>
-                    <p class="wechat">微信：asdhs5261</p>
+                    <h4>{{ item.title }}</h4>
+                    <p class="tel">电话：{{ item.tel }}</p>
+                    <p class="wechat">微信：{{ item.weChat }}</p>
                 </div>
             </div>
         </div>
@@ -32,13 +28,20 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
+
     export default {
         name: 'Footer',
         data() {
             return {
 
             }
-        }
+        },
+        computed: {
+            ...mapState({
+                vxAllDataInfo: state => state.data.allDataInfo.footInfo,
+            }),
+        },
     }
 </script>
 

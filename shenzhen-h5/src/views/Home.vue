@@ -1,18 +1,21 @@
 <template>
-    <div class="home">
+    <div v-if="!showPage" class="loading-content">
+        <!-- <a-spin size="large" /> -->
+    </div>
+    <div v-else class="home">
         <a-back-top />
         <HeadNav />
-        <div class="main-banner"></div>
+        <div class="main-banner" :style='{backgroundImage: "url("+vxHomeBanner+")"}'></div>
         <div id="meeting-bg" class="meeting-bg content-warp">
             <div class="article-title">
                 <div class="border-left"></div>
                 <div>
-                    <h3>会议背景</h3>
-                    <p class="des">Conference background</p>
+                    <h3>{{ vxAllDataInfo.title }}</h3>
+                    <p class="des">{{ vxAllDataInfo.des }}</p>
                 </div>
             </div>
             <p>
-                36氪作为中国创投行业的见证者，完整经历了过去10年互联网以及移动互联网的创业浪潮，陪伴了一代创业者和投资人一起成长。我们拥有服务于VCPE等GP的VClub，有服务于创业者的EClub。现在我们发起36氪“源计划”，为一级市场源头的LP们提供展示舞台，共同为中国新商业生态注入新的源动力！政策导向等定期输出高质量研究报告，研究方向覆盖人工智能、5G、区块链、医疗、金融、物流、文娱、消费、汽车、教育等多个领域，帮助政府、企业、投资机构等快速了解行业动态，把握发展机遇和明确发展方向。同时，研究院致力于为全国各级政府、企业、VC/PE机构、政府引导基金、孵化器/产业园区等提供专业定制化咨询服务，服务内容包括行业研究、产业规划、用户研究、股权投资研究、指数研究、投资配置、基金/企业尽调、战略规划、园区规划等，帮助政府、企业、投资机构等快速了解行业动态，把握发展机遇和明确发展方向。
+                {{ vxAllDataInfo.detail }}
             </p>
         </div>
         <MeetingAgenda />
@@ -32,6 +35,8 @@
     import FooterBanner from '@/components/FooterBanner.vue'
     import Footer from '@/components/Footer.vue'
     import CooperationUnit from '@/components/CooperationUnit.vue'
+    import {mapActions, mapState} from 'vuex'
+    import {message} from 'ant-design-vue';
 
     export default {
         name: 'Home',
@@ -46,12 +51,39 @@
         },
         data() {
             return {
+                showPage: false
+            }
+        },
+        computed: {
+            ...mapState({
+                vxAllDataInfo: state => state.data.allDataInfo.meetingBgInfo,
+                vxHomeBanner: state => state.data.allDataInfo.homeBanner,
+            }),
+        },
+        methods: {
+            ...mapActions({
+                vxGetAllData: 'data/getAllData',
+            })
+        },
+        async mounted() {
+            try {
+                await this.vxGetAllData()
+                this.showPage = true
+            } catch (error) {
+                message.error('接口出了点问题');
             }
         },
     }
 </script>
 
 <style lang="scss">
+    .loading-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+        width: 100%;
+    }
     .home {
         display: flex;
         flex-direction: column;
@@ -63,7 +95,6 @@
         margin: 0 auto;
     }
     .main-banner {
-        background: url("../assets/main-banner.png");
         background-size: cover;
         width: 100%;
         background-repeat: no-repeat;

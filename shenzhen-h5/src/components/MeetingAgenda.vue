@@ -3,15 +3,15 @@
         <div class="article-title">
             <div class="border-left"></div>
             <div>
-                <h3>会议议程</h3>
-                <p class="des">Agenda</p>
+                <h3>{{ vxAllDataInfo.title }}</h3>
+                <p class="des">{{ vxAllDataInfo.des }}</p>
             </div>
         </div>
         <div class="tab-head">
             <div
                 class="row-title"
                 :class="{ 'tab-actived': activeTabIndex === index }"
-                v-for="(item, index) in meetingAgendaData"
+                v-for="(item, index) in vxAllDataInfo.agendaInfo"
                 :key="index"
                 @click="activeTabIndex = index"
             >
@@ -25,30 +25,32 @@
                 :key="index"
             >
                 <div class="time">{{ item.time }}</div>
-                <div class="main-content">{{ item.mainContent }}</div>
-                <div class="content">{{ item.content }}</div>
-                <div class="speaker">{{ item.speaker }}</div>
-                <div class="from">{{ item.from }}</div>
+                <div class="main-content">{{ item.process }}</div>
+                <div class="content">{{ item.title }}</div>
+                <div class="speaker">{{ item.custom }}</div>
+                <div class="from">{{ item.position }}</div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import {meetingAgendaData} from '@/libs/mock'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'MeetingAgenda',
         data() {
             return {
                 activeTabIndex: 0,
-                meetingAgendaData,
                 tabMenuList: [],
             }
         },
         computed: {
+            ...mapState({
+                vxAllDataInfo: state => state.data.allDataInfo.meetingAgenda,
+            }),
             tabContentList() {
-                return meetingAgendaData[this.activeTabIndex].list
+                return this.vxAllDataInfo.agendaInfo[this.activeTabIndex].detailLists
             }
         }
     }
@@ -115,13 +117,13 @@
         }
         .content {
             width: 34%;
-			text-align: left;
+            text-align: left;
         }
         .speaker {
-            width:15%;
+            width: 15%;
         }
         .from {
-			text-align: left;
+            text-align: left;
             width: 26%;
         }
     }

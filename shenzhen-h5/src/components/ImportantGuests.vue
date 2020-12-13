@@ -3,17 +3,25 @@
         <div class="article-title">
             <div class="border-left"></div>
             <div>
-                <h3>重磅嘉宾</h3>
-                <p class="des">Guest</p>
+                <h3>{{ vxAllDataInfo.title }}</h3>
+                <p class="des">{{ vxAllDataInfo.des }}</p>
             </div>
         </div>
         <div class="guests-wrap">
             <div
                 class="guest-item"
-                v-for="(item, index) in importantGuestsData"
-                :key="index"
+                v-for="item in vxAllDataInfo.guestsData"
+                :key="item.id"
             >
-                <img class="avatar" :src="item.avatar" alt="" />
+                <img
+                    class="avatar"
+                    :src="
+                        item.img.length < 20
+                            ? `http://pre.ryx365.com:8888/images/${item.img}.jpg`
+                            : item.img
+                    "
+                    alt=""
+                />
                 <p class="name">{{ item.name }}</p>
                 <p>{{ item.company }}</p>
                 <p>{{ item.position }}</p>
@@ -24,15 +32,19 @@
 </template>
 
 <script>
-    import {importantGuestsData} from '@/libs/mock'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'ImportantGuests',
         data() {
             return {
-                importantGuestsData
             }
-        }
+        },
+        computed: {
+            ...mapState({
+                vxAllDataInfo: state => state.data.allDataInfo.importantGuests,
+            }),
+        },
     }
 </script>
 

@@ -1,5 +1,8 @@
 <template>
-    <div class="meeting-process-content">
+    <div v-if="!showPage" class="loading-content">
+        <!-- <a-spin size="large" /> -->
+    </div>
+    <div v-else class="meeting-process-content">
         <a-back-top />
         <HeadNav isPrevious="true" />
         <div class="main-banner"></div>
@@ -32,6 +35,8 @@
     import FooterBanner from '@/components/FooterBanner.vue'
     import ParticipatingCompanies from '@/components/ParticipatingCompanies.vue'
     import Footer from '@/components/Footer.vue'
+    import {mapActions, mapState} from 'vuex'
+    import {message} from 'ant-design-vue';
 
     export default {
         name: 'Home',
@@ -47,6 +52,25 @@
         },
         data() {
             return {
+                showPage: false
+            }
+        },
+        computed: {
+            ...mapState({
+                vxAllDataInfo: state => state.data.allDataInfo.meetingBgInfo,
+            }),
+        },
+        methods: {
+            ...mapActions({
+                vxGetAllData: 'data/getAllData',
+            })
+        },
+        async mounted() {
+            try {
+                await this.vxGetAllData()
+                this.showPage = true
+            } catch (error) {
+                message.error('接口出了点问题');
             }
         },
     }

@@ -3,28 +3,40 @@
         <div class="article-title">
             <div class="border-left"></div>
             <div>
-                <h3>头条新闻</h3>
-                <p class="des">NEWS</p>
+                <h3>{{ vxAllDataInfo.title }}</h3>
+                <p class="des">{{ vxAllDataInfo.des }}</p>
             </div>
         </div>
         <div class="news-warp">
             <div class="content">
                 <div
                     class="news-item"
-                    v-for="(item, index) in newsContent"
-                    :key="index"
-                    @click="onOpenUrl(item.link)"
+                    v-for="item in vxAllDataInfo.newsContent"
+                    :key="item.id"
+                    @click="onOpenUrl(item.url)"
                 >
-                    <img :src="item.pic" alt="" />
+                    <img
+                        :src="
+                            item.img.length < 20
+                                ? `http://pre.ryx365.com:8888/images/${item.img}.jpg`
+                                : item.img
+                        "
+                        alt=""
+                    />
                     <div>
                         <p class="title">{{ item.title }}</p>
-                        <p class="des">{{ item.des }}</p>
+                        <p class="des">{{ item.text }}</p>
                     </div>
                 </div>
             </div>
             <div class="time-line">
                 <a-timeline>
-                    <a-timeline-item>
+                    <a-timeline-item
+                        v-for="item in vxAllDataInfo.timeLineContent"
+                        class="time-line-item"
+                        :key="item.id"
+                        @click="onOpenUrl(item.url)"
+                    >
                         <template #dot
                             ><img
                                 class="cube-icon"
@@ -32,73 +44,12 @@
                                 alt=""
                         /></template>
                         <p class="title">
-                            元戎启行联合杭州，建立长三角自动驾驶测…
+                            {{ item.title }}
                         </p>
                         <p class="des">
-                            9月29日，
-                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
+                            {{ item.text }}
                         </p>
                     </a-timeline-item>
-                    <a-timeline-item>
-                        <template #dot
-                            ><img
-                                class="cube-icon"
-                                src="../assets/cube.png"
-                                alt=""
-                        /></template>
-                        <p class="title">
-                            元戎启行联合杭州，建立长三角自动驾驶测…
-                        </p>
-                        <p class="des">
-                            9月29日，
-                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
-                        </p></a-timeline-item
-                    >
-                    <a-timeline-item>
-                        <template #dot
-                            ><img
-                                class="cube-icon"
-                                src="../assets/cube.png"
-                                alt=""
-                        /></template>
-                        <p class="title">
-                            元戎启行联合杭州，建立长三角自动驾驶测…
-                        </p>
-                        <p class="des">
-                            9月29日，
-                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
-                        </p></a-timeline-item
-                    >
-                    <a-timeline-item>
-                        <template #dot
-                            ><img
-                                class="cube-icon"
-                                src="../assets/cube.png"
-                                alt=""
-                        /></template>
-                        <p class="title">
-                            元戎启行联合杭州，建立长三角自动驾驶测…
-                        </p>
-                        <p class="des">
-                            9月29日，
-                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
-                        </p></a-timeline-item
-                    >
-                    <a-timeline-item>
-                        <template #dot
-                            ><img
-                                class="cube-icon"
-                                src="../assets/cube.png"
-                                alt=""
-                        /></template>
-                        <p class="title">
-                            元戎启行联合杭州，建立长三角自动驾驶测…
-                        </p>
-                        <p class="des">
-                            9月29日，
-                            深圳元戎启行科技有限公司与杭州余杭经济开发区就“深圳元戎启行科技有限公司长三
-                        </p></a-timeline-item
-                    >
                 </a-timeline>
             </div>
         </div>
@@ -106,24 +57,18 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
+
     export default {
         name: 'TopNews',
         data() {
             return {
-                newsContent: [{
-                    pic: require('../assets/top-news-1.png'),
-                    title: '分享主题分享主题分享主题分享主题分享主题分享分享主题分享主题分享主题分享主题分享主题分享',
-                    des: '分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介。分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介分享简介。'
-                }, {
-                    pic: require('../assets/top-news-2.png'),
-                    title: '新四化下的汽车零部件行业报告金山办公宣布金山新四化下的汽车零部件行业报告金山办公宣布金山',
-                    des: '乘用车销量持续下滑，靠整车销量生存的汽车零部件企业该何去何从？36氪获悉，金山办公宣布金山文档成为第31届世界大学生运动会办公软件类官方独家供应商。'
-                }, {
-                    pic: require('../assets/top-news-3.png'),
-                    title: '新四化下的汽车零部件行业报告金山办公宣布金山新四化下的汽车零部件行业报告金山办公宣布金山',
-                    des: '乘用车销量持续下滑，靠整车销量生存的汽车零部件企业该何去何从？36氪获悉，金山办公宣布金山文档成为第31届世界大学生运动会办公软件类官方独家供应商。'
-                }]
             }
+        },
+        computed: {
+            ...mapState({
+                vxAllDataInfo: state => state.data.allDataInfo.topNews,
+            }),
         },
         methods: {
             onOpenUrl(url = "//www.baidu.com/") {
@@ -154,6 +99,7 @@
         height: 580px;
         background: #ffffff;
         box-shadow: 0px 0px 15px 0px rgba(213, 213, 213, 0.5);
+        overflow-y: scroll;
     }
     .news-item {
         display: flex;
@@ -196,7 +142,14 @@
             }
         }
     }
-
+    .time-line-item {
+        cursor: pointer;
+        &:hover {
+            .title {
+                color: #318aff;
+            }
+        }
+    }
     .time-line {
         padding: 45px 22px 0 33px;
         .title {
@@ -206,10 +159,6 @@
             margin-bottom: 10px;
             color: #333333;
             line-height: 21px;
-            &:hover {
-                color: #318aff;
-                cursor: pointer;
-            }
         }
         .des {
             font-size: 12px;

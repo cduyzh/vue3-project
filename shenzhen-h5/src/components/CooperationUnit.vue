@@ -3,66 +3,46 @@
         <div class="article-title">
             <div class="border-left"></div>
             <div>
-                <h3>合作单位</h3>
-                <p class="des">Cooperation Unit</p>
+                <h3>{{ vxAllDataInfo.title }}</h3>
+                <p class="des">{{ vxAllDataInfo.des }}</p>
             </div>
         </div>
-        <div class="content">
-            <h4>指导单位</h4>
-            <img src="../assets/support-unit-1.png" alt="" />
-        </div>
-        <div class="content">
-            <h4>主办单位</h4>
-            <div class="img-group-1">
-                <img src="../assets/support-unit-1.png" alt="" />
-                <img src="../assets/support-unit-2.png" alt="" />
-            </div>
-        </div>
-        <div class="content">
-            <h4>学术支持</h4>
-            <div class="img-group-1">
-                <img src="../assets/support-unit-1.png" alt="" />
-                <img src="../assets/support-unit-2.png" alt="" />
-                <img src="../assets/support-unit-3.png" alt="" />
-                <img src="../assets/support-unit-4.png" alt="" />
-            </div>
-        </div>
-        <div class="content">
-            <h4>支持单位</h4>
-            <div class="img-group-2">
-                <img src="../assets/support-unit-1.png" alt="" />
-                <img src="../assets/support-unit-2.png" alt="" />
-                <img src="../assets/support-unit-3.png" alt="" />
-                <img src="../assets/support-unit-4.png" alt="" />
-                <img src="../assets/support-unit-5.png" alt="" />
-                <img src="../assets/support-unit-1.png" alt="" />
-                <img src="../assets/support-unit-2.png" alt="" />
-                <img src="../assets/support-unit-3.png" alt="" />
-                <img src="../assets/support-unit-4.png" alt="" />
-                <img src="../assets/support-unit-5.png" alt="" />
-                <img src="../assets/support-unit-1.png" alt="" />
-                <img src="../assets/support-unit-2.png" alt="" />
-                <img src="../assets/support-unit-3.png" alt="" />
-                <img src="../assets/support-unit-4.png" alt="" />
-                <img src="../assets/support-unit-5.png" alt="" />
-                <img src="../assets/support-unit-1.png" alt="" />
-                <img src="../assets/support-unit-2.png" alt="" />
-                <img src="../assets/support-unit-3.png" alt="" />
-                <img src="../assets/support-unit-4.png" alt="" />
-                <img src="../assets/support-unit-5.png" alt="" />
+        <div
+            class="content"
+            v-for="item in vxAllDataInfo.dataListInfo"
+            :key="item.id"
+        >
+            <h4>{{ item.title }}</h4>
+            <div class="img-group">
+                <img
+                    v-for="(imgSrc, index) in item.unitLogoList"
+                    :key="index"
+                    :src="
+                        imgSrc.length < 20
+                            ? `http://pre.ryx365.com:8888/images/${imgSrc}.jpg`
+                            : imgSrc
+                    "
+                />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {mapState} from 'vuex'
+
     export default {
         name: 'CooperationUnit',
         data() {
             return {
 
             }
-        }
+        },
+        computed: {
+            ...mapState({
+                vxAllDataInfo: state => state.data.allDataInfo.cooperationUnitInfo,
+            }),
+        },
     }
 </script>
 
@@ -94,12 +74,7 @@
         height: 60px;
         border: 1px solid #d8d8d8;
     }
-    .img-group-1 {
-        img {
-            margin-right: 24px;
-        }
-    }
-    .img-group-2 {
+    .img-group {
         img {
             margin: 0 24px 20px 0;
             &:nth-child(6n + 6) {
