@@ -9,6 +9,8 @@ export default {
   mutations: {
     setAllDataInfo(state, data) {
       const newData = {
+        // 网页标题
+        webTitle: data.title,
         // 首页banner
         homeBanner:
           data.banner.length < 20
