@@ -98,7 +98,7 @@
         background-size: cover;
         width: 100%;
         background-repeat: no-repeat;
-        height: 488px;
+        height: 610px;
         max-width: 2018px;
         background-position-x: center;
         margin-bottom: 20px;
