@@ -102,7 +102,7 @@
         overflow-y: scroll;
     }
     .news-item {
-        display: flex;
+        display: inline-flex;
         cursor: pointer;
         transition: 0.3s all;
         margin-bottom: 30px;
