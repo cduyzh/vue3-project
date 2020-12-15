@@ -84,9 +84,9 @@ export default {
     },
   },
   actions: {
-    async getAllData({ commit }) {
+    async getAllData({ commit }, { code }) {
       const res = await axios.get(
-        "http://localhost:8081/local_api/api/forum?code=zcgl"
+        `http://localhost:8081/local_api/api/forum?code=${code}`
       );
       commit("setAllDataInfo", res.data.data);
       return res;

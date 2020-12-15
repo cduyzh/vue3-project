@@ -70,8 +70,9 @@
             })
         },
         async mounted() {
+            const code = location.hash.split('=')[1] || 'zcgl'
             try {
-                await this.vxGetAllData()
+                await this.vxGetAllData({code})
                 document.title = this.vxWebTitle
                 this.showPage = true
             } catch (error) {
