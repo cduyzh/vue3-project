@@ -70,7 +70,8 @@
             })
         },
         async mounted() {
-            const code = location.hash.split('=')[1] || 'zcgl'
+            // const code = location.hash.split('=')[1] || 'zcgl'
+            const code = this.$route.query.code || 'zcgl'
             try {
                 await this.vxGetAllData({code})
                 document.title = this.vxWebTitle
