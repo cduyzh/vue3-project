@@ -9,6 +9,8 @@ export default {
   mutations: {
     setAllDataInfo(state, data) {
       const newData = {
+        // 网页标题
+        webTitle: data.title,
         // 首页banner
         homeBanner:
           data.banner.length < 20
@@ -82,9 +84,9 @@ export default {
     },
   },
   actions: {
-    async getAllData({ commit }) {
+    async getAllData({ commit }, { code }) {
       const res = await axios.get(
-        "http://localhost:8081/local_api/api/forum?code=zcgl"
+        `http://localhost:8081/local_api/api/forum?code=${code}`
       );
       commit("setAllDataInfo", res.data.data);
       return res;

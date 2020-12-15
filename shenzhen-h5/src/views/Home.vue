@@ -5,7 +5,10 @@
     <div v-else class="home">
         <a-back-top />
         <HeadNav />
-        <div class="main-banner" :style='{backgroundImage: "url("+vxHomeBanner+")"}'></div>
+        <div
+            class="main-banner"
+            :style="{ backgroundImage: 'url(' + vxHomeBanner + ')' }"
+        ></div>
         <div id="meeting-bg" class="meeting-bg content-warp">
             <div class="article-title">
                 <div class="border-left"></div>
@@ -56,6 +59,7 @@
         },
         computed: {
             ...mapState({
+                vxWebTitle: state => state.data.allDataInfo.webTitle,
                 vxAllDataInfo: state => state.data.allDataInfo.meetingBgInfo,
                 vxHomeBanner: state => state.data.allDataInfo.homeBanner,
             }),
@@ -66,8 +70,11 @@
             })
         },
         async mounted() {
+            // const code = location.hash.split('=')[1] || 'zcgl'
+            const code = this.$route.query.code || 'zcgl'
             try {
-                await this.vxGetAllData()
+                await this.vxGetAllData({code})
+                document.title = this.vxWebTitle
                 this.showPage = true
             } catch (error) {
                 message.error('接口出了点问题');
@@ -98,7 +105,7 @@
         background-size: cover;
         width: 100%;
         background-repeat: no-repeat;
-        height: 488px;
+        height: 610px;
         max-width: 2018px;
         background-position-x: center;
         margin-bottom: 20px;
